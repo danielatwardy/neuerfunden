@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEU·ERFUNDEN — KI für Frauen, die sich neu erfinden</title>
+<meta name="description" content="Jeden Montag: ein KI-Tool, ein Tipp, eine Neuigkeit — kostenlos, sofort anwendbar, ohne Technikhintergrund.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm-dark: #1C1810;
+    --terra: #C4622D;
+    --gold: #D4A843;
+    --muted: #8A8278;
+    --soft: #EDE8DF;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--warm-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ══════════════════════════════════════
+     HERO
+  ══════════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 56px 32px 80px;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-left { display: flex; flex-direction: column; }
+
+  .hero-rule {
+    border: none;
+    border-top: 3px solid var(--warm-dark);
+    margin-bottom: 32px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+    color: var(--warm-dark);
+  }
+
+  .hero-title em {
+    color: var(--terra);
+    font-style: italic;
+  }
+
+  .hero-proof {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-proof-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--terra);
+    flex-shrink: 0;
+  }
+
+  .hero-proof-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--terra);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: #3a3530;
+    max-width: 460px;
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .hero-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .hero-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #3a3530;
+    line-height: 1.5;
+  }
+
+  .hero-bullet-icon {
+    color: var(--terra);
+    font-size: 13px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* CTA */
+  .cta-block { display: flex; flex-direction: column; gap: 0; max-width: 440px; }
+
+  .signup-inline {
+    display: flex;
+    border: 2px solid var(--warm-dark);
+    background: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .signup-inline input[type="email"] {
+    flex: 1;
+    padding: 15px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--warm-dark);
+    min-width: 0;
+  }
+
+  .signup-inline input::placeholder { color: var(--muted); }
+
+  .btn-primary {
+    background: var(--terra);
+    color: white;
+    border: none;
+    padding: 15px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .btn-primary:hover { background: #a8521f; }
+
+  .cta-micro {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .cta-micro a { color: var(--muted); text-decoration: underline; }
+
+  .social-proof-strip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--soft);
+    border-left: 3px solid var(--gold);
+    font-size: 12px;
+    color: #3a3530;
+    line-height: 1.5;
+  }
+
+  .social-proof-strip-icon { font-size: 16px; flex-shrink: 0; }
+
+  /* Hero Right */
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    inset: -24px -16px -32px 16px;
+    background: var(--soft);
+    border: 1px solid #d8d1c8;
+    transform: rotate(2deg);
+    z-index: 0;
+  }
+
+  .mini-preview {
+    position: relative;
+    z-index: 2;
+    background: var(--white);
+    border: 1px solid #ddd6cc;
+    padding: 28px 30px 24px;
+    transform: rotate(-1.5deg);
+    box-shadow: 0 8px 40px rgba(28,24,16,0.14), 0 2px 8px rgba(28,24,16,0.06);
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .preview-badge {
+    position: absolute;
+    top: -14px; right: 16px;
+    background: var(--terra);
+    color: white;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    font-weight: 500;
+    z-index: 3;
+  }
+
+  .mp-header {
+    border-top: 2.5px solid var(--warm-dark);
+    border-bottom: 1px solid var(--warm-dark);
+    padding: 16px 0 12px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .mp-issue { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+
+  .mp-masthead {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .mp-masthead span { color: var(--terra); font-style: italic; }
+  .mp-tagline { font-size: 10px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+
+  .mp-date {
+    position: absolute;
+    top: 16px; right: 0;
+    font-size: 9px;
+    color: var(--muted);
+    text-align: right;
+    letter-spacing: 0.04em;
+  }
+
+  .mp-intro {
+    background: var(--warm-dark);
+    color: var(--cream);
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mp-intro::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: var(--terra);
+    opacity: 0.2;
+    position: absolute;
+    top: -8px; left: 8px;
+    line-height: 1;
+  }
+
+  .mp-intro p { font-size: 11px; line-height: 1.7; position: relative; z-index: 1; }
+
+  .mp-intro .mp-author {
+    margin-top: 8px;
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  .mp-section-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+
+  .mp-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--terra);
+    font-style: italic;
+    line-height: 1;
+    min-width: 20px;
+  }
+
+  .mp-label {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-left: 1px solid var(--gold);
+    padding-left: 8px;
+  }
+
+  .mp-card { border: 1px solid var(--warm-dark); padding: 12px 14px; margin-bottom: 14px; }
+  .mp-card-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+  .mp-card-sub { font-size: 9px; color: var(--terra); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .mp-card p { font-size: 10px; color: #3a3530; line-height: 1.6; margin-bottom: 8px; }
+
+  .mp-use-case {
+    background: var(--soft);
+    padding: 8px 10px;
+    border-left: 2px solid var(--terra);
+    font-size: 10px;
+    font-style: italic;
+    color: #3a3530;
+  }
+
+  .mp-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: var(--terra);
+    border-top: 2px solid var(--warm-dark);
+    padding-top: 12px;
+    line-height: 1.4;
+  }
+
+  /* ══════════════════════════════════════
+     PROMISE STRIP
+  ══════════════════════════════════════ */
+  .promise-strip {
+    background: var(--warm-dark);
+    color: var(--cream);
+    padding: 48px 32px;
+  }
+
+  .promise-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .promise-item { display: flex; flex-direction: column; gap: 8px; }
+
+  .promise-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    color: var(--terra);
+    font-style: italic;
+    line-height: 1;
+  }
+
+  .promise-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-left: 1px solid var(--gold);
+    padding-left: 10px;
+  }
+
+  .promise-text { font-size: 14px; color: #c8c0b5; line-height: 1.6; }
+
+  /* ══════════════════════════════════════
+     NEWSLETTER VOLLVORSCHAU
+  ══════════════════════════════════════ */
+  .preview-section {
+    padding: 100px 32px 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .section-heading span { color: var(--terra); font-style: italic; }
+
+  .section-intro {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 56px;
+    max-width: 480px;
+  }
+
+  .newsletter-mockup { position: relative; max-width: 680px; }
+
+  .mockup-shadow-2 {
+    position: absolute;
+    top: 16px; left: 16px; right: -16px; bottom: -16px;
+    background: var(--soft);
+    border: 1px solid #d4cdc3;
+    z-index: 0;
+  }
+
+  .mockup-shadow-1 {
+    position: absolute;
+    top: 8px; left: 8px; right: -8px; bottom: -8px;
+    background: var(--soft);
+    border: 1px solid #ccc5bb;
+    z-index: 1;
+  }
+
+  .mockup-card {
+    position: relative;
+    z-index: 2;
+    background: var(--white);
+    border: 1px solid #e0d9d1;
+    padding: 40px 44px;
+    box-shadow: 0 4px 40px rgba(28,24,16,0.08);
+  }
+
+  .m-header {
+    border-top: 3px solid var(--warm-dark);
+    border-bottom: 1px solid var(--warm-dark);
+    padding: 24px 0 18px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .m-issue-line { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+
+  .m-masthead {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .m-masthead span { color: var(--terra); font-style: italic; }
+  .m-tagline { margin-top: 8px; font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+
+  .m-date {
+    position: absolute;
+    top: 24px; right: 0;
+    font-size: 10px;
+    color: var(--muted);
+    text-align: right;
+    letter-spacing: 0.04em;
+  }
+
+  .m-intro {
+    background: var(--warm-dark);
+    color: var(--cream);
+    padding: 22px 26px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .m-intro::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: var(--terra);
+    opacity: 0.2;
+    position: absolute;
+    top: -14px; left: 10px;
+    line-height: 1;
+  }
+
+  .m-intro p { font-size: 13px; line-height: 1.75; position: relative; z-index: 1; }
+
+  .m-intro .m-author {
+    margin-top: 12px;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  .m-section-label { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+
+  .m-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--terra);
+    font-style: italic;
+    line-height: 1;
+    min-width: 26px;
+  }
+
+  .m-label-text {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-left: 1px solid var(--gold);
+    padding-left: 10px;
+  }
+
+  .m-card { border: 1px solid var(--warm-dark); padding: 20px 22px; margin-bottom: 24px; }
+  .m-card-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .m-card-sub { font-size: 11px; color: var(--terra); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .m-card p { font-size: 12px; color: #3a3530; line-height: 1.7; margin-bottom: 10px; }
+
+  .m-use-case {
+    background: var(--soft);
+    padding: 12px 14px;
+    border-left: 3px solid var(--terra);
+    font-size: 11px;
+    font-style: italic;
+    color: #3a3530;
+  }
+
+  .m-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--terra);
+    border-top: 2px solid var(--warm-dark);
+    padding-top: 20px;
+    margin-top: 4px;
+  }
+
+  .preview-annotation {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 680px;
+  }
+
+  .annotation-item { display: flex; gap: 12px; align-items: flex-start; }
+
+  .annotation-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--terra);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .annotation-item h4 { font-family: 'Playfair Display', serif; font-size: 14px; margin-bottom: 4px; }
+  .annotation-item p { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+  /* ══════════════════════════════════════
+     ARCHIV
+  ══════════════════════════════════════ */
+  .archiv-section {
+    padding: 80px 32px 100px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .archiv-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-bottom: 1px solid var(--soft);
+    padding-bottom: 24px;
+  }
+
+  .archiv-note {
+    font-size: 12px;
+    color: var(--muted);
+    max-width: 320px;
+    line-height: 1.6;
+    text-align: right;
+  }
+
+  .archiv-note a { color: var(--terra); text-decoration: none; }
+
+  .archiv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .issue-card {
+    border: 1px solid #d8d1c8;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .issue-card:hover { box-shadow: 0 8px 32px rgba(28,24,16,0.1); transform: translateY(-2px); }
+
+  .issue-card-top {
+    background: var(--warm-dark);
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .issue-num-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--terra);
+    line-height: 1;
+  }
+
+  .issue-meta { display: flex; flex-direction: column; gap: 4px; }
+  .issue-meta-title { font-family: 'Playfair Display', serif; font-size: 14px; color: var(--cream); font-weight: 700; }
+  .issue-meta-date { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+  .issue-card-body { padding: 20px 22px; flex: 1; }
+
+  .issue-topic-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .issue-topic { display: flex; gap: 10px; align-items: flex-start; }
+  .issue-topic-num { font-size: 10px; letter-spacing: 0.1em; color: var(--gold); font-weight: 500; min-width: 18px; margin-top: 1px; }
+  .issue-topic-text { font-size: 13px; color: #3a3530; line-height: 1.5; }
+
+  .issue-card-footer {
+    padding: 14px 22px;
+    border-top: 1px solid var(--soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .issue-read-link { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--terra); font-weight: 500; }
+  .issue-tag { font-size: 10px; padding: 3px 8px; background: var(--soft); color: var(--muted); }
+
+  .issue-card-placeholder {
+    border: 1.5px dashed #cdc6bc;
+    background: transparent;
+    padding: 32px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 180px;
+    color: var(--muted);
+  }
+
+  .placeholder-icon { font-family: 'Playfair Display', serif; font-size: 36px; font-style: italic; color: #d8d1c8; }
+  .placeholder-text { font-size: 12px; text-align: center; line-height: 1.6; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  .archiv-brevo-hint {
+    margin-top: 32px;
+    background: var(--soft);
+    border-top: 3px solid var(--gold);
+    padding: 20px 24px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .archiv-brevo-hint strong { color: var(--warm-dark); }
+
+  /* ══════════════════════════════════════
+     ABOUT / TRUST
+  ══════════════════════════════════════ */
+  .about-section {
+    background: var(--soft);
+    padding: 80px 32px;
+  }
+
+  .about-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .about-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--terra);
+    margin-bottom: 24px;
+  }
+
+  .about-text { font-size: 15px; color: #3a3530; line-height: 1.8; margin-bottom: 14px; }
+
+  .about-sig { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: var(--warm-dark); margin-top: 8px; }
+  .about-meta { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; }
+
+  .about-stats { display: flex; flex-direction: column; gap: 28px; }
+  .stat-row { border-top: 1px solid #d4cdc3; padding-top: 20px; }
+
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 700; color: var(--warm-dark); line-height: 1; }
+  .stat-num span { color: var(--terra); font-style: italic; }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* ══════════════════════════════════════
+     SIGNUP
+  ══════════════════════════════════════ */
+  .signup-section {
+    padding: 100px 32px;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .signup-eyebrow { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+
+  .signup-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .signup-title span { color: var(--terra); font-style: italic; }
+  .signup-sub { font-size: 16px; color: var(--muted); margin-bottom: 48px; line-height: 1.6; }
+
+  .brevo-form {
+    background: var(--white);
+    border: 1.5px solid var(--warm-dark);
+    padding: 40px 36px;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 13px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    background: var(--cream);
+    border: 1px solid #d4cdc3;
+    outline: none;
+    color: var(--warm-dark);
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus { border-color: var(--terra); }
+  .form-group input::placeholder { color: var(--muted); }
+
+  .gdpr-checkbox { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 24px; }
+
+  .gdpr-checkbox input[type="checkbox"] {
+    width: 16px; height: 16px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    accent-color: var(--terra);
+    cursor: pointer;
+  }
+
+  .gdpr-checkbox label { font-size: 12px; color: var(--muted); line-height: 1.6; cursor: pointer; }
+  .gdpr-checkbox label a { color: var(--terra); text-decoration: none; }
+
+  .btn-signup {
+    width: 100%;
+    background: var(--terra);
+    color: white;
+    border: none;
+    padding: 18px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-signup:hover { background: #a8521f; }
+
+  .signup-reassurance { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 20px; }
+  .signup-reassurance span { display: inline-block; margin: 0 6px; color: var(--terra); }
+
+  /* ══════════════════════════════════════
+     DSGVO BOX
+  ══════════════════════════════════════ */
+  .dsgvo-box {
+    border-top: 3px solid var(--gold);
+    background: var(--soft);
+    padding: 24px 28px;
+    text-align: left;
+    margin-top: 32px;
+  }
+
+  .dsgvo-box h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 10px; }
+  .dsgvo-box p { font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 8px; }
+  .dsgvo-box strong { color: var(--warm-dark); }
+  .dsgvo-box a { color: var(--terra); text-decoration: none; }
+
+  /* ══════════════════════════════════════
+     IMPRESSUM BOX
+  ══════════════════════════════════════ */
+  .impressum-box {
+    border-top: 3px solid var(--muted);
+    background: var(--soft);
+    padding: 24px 28px;
+    text-align: left;
+    margin-top: 24px;
+  }
+
+  .impressum-box h4 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 12px; }
+  .impressum-box p { font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
+  .impressum-box strong { color: var(--warm-dark); }
+
+  /* ══════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════ */
+  footer {
+    background: var(--warm-dark);
+    color: var(--cream);
+    padding: 40px 32px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  .footer-brand span { color: var(--terra); font-style: italic; }
+
+  .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.05em; }
+  .footer-links a:hover { color: var(--cream); }
+
+  .footer-copy { font-size: 11px; color: var(--muted); }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════ */
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding: 40px 20px 60px;
+      gap: 48px;
+    }
+
+    .hero-right { order: -1; }
+    .hero-right::before { display: none; }
+    .mini-preview { transform: none; max-width: 100%; }
+
+    .signup-inline { flex-direction: column; border: none; gap: 8px; }
+    .signup-inline input[type="email"] { border: 2px solid var(--warm-dark); padding: 15px 18px; width: 100%; }
+    .btn-primary { width: 100%; text-align: center; padding: 16px 24px; }
+
+    .promise-inner { grid-template-columns: 1fr; gap: 32px; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .preview-annotation { grid-template-columns: 1fr; }
+
+    .brevo-form { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════ -->
+<section class="hero">
+
+  <div class="hero-left">
+    <hr class="hero-rule">
+    <div class="hero-eyebrow">Kostenloser Newsletter · Jeden Montag · Jetzt starten</div>
+
+    <h1 class="hero-title">
+      Du weißt, KI verändert alles.<br>
+      Aber <em>wo fängst du an?</em>
+    </h1>
+
+    <div class="hero-proof">
+      <div class="hero-proof-dot"></div>
+      <span class="hero-proof-number">Gründer-Ausgabe</span>
+      <span>— Sei dabei, wenn es losgeht.</span>
+    </div>
+
+    <p class="hero-sub">
+      NEU·ERFUNDEN ist der Newsletter für Frauen, die KI nutzen wollen — ohne Technikhintergrund, ohne Vorkenntnisse, ohne Zeitverlust. Jeden Montag: ein Tool, ein Tipp, eine Neuigkeit. Sofort anwendbar.
+    </p>
+
+    <div class="hero-bullets">
+      <div class="hero-bullet">
+        <span class="hero-bullet-icon">→</span>
+        <span><strong>1 KI-Tool pro Woche</strong> — erklärt wie unter Freundinnen, nicht wie im Handbuch</span>
+      </div>
+      <div class="hero-bullet">
+        <span class="hero-bullet-icon">→</span>
+        <span><strong>Sofort anwendbar</strong> — kein Technikstudium, keine Vorkenntnisse nötig</span>
+      </div>
+      <div class="hero-bullet">
+        <span class="hero-bullet-icon">→</span>
+        <span><strong>Von Daniela</strong> — 52 Jahre, bei null angefangen, schreibt was wirklich hilft</span>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <!--
+      ╔══════════════════════════════════════════════════════════╗
+      ║  BREVO EINBETTUNG — DIESEN BLOCK ERSETZEN               ║
+      ║  1. brevo.com → Contacts → Forms → Einbettungsformular  ║
+      ║  2. Double-Opt-in aktivieren (DSGVO-Pflicht!)            ║
+      ║  3. Generierten Code hier einfügen                       ║
+      ╚══════════════════════════════════════════════════════════╝
+      -->
+      <form class="signup-inline" action="#anmelden" method="get"
+        onsubmit="document.getElementById('anmelden').scrollIntoView({behavior:'smooth'}); return false;">
+        <input type="email" placeholder="deine@email.de" required>
+        <button type="submit" class="btn-primary">Gratis anmelden →</button>
+      </form>
+
+      <p class="cta-micro">
+        Kostenlos · Kein Spam · Jederzeit abbestellbar ·
+        <a href="#dsgvo">Datenschutz ↓</a>
+      </p>
+
+      <div class="social-proof-strip">
+        <span class="social-proof-strip-icon">✦</span>
+        <span><strong>Ausgabe #01 erscheint im März 2026.</strong> Trag dich jetzt ein und bekomme sie als Erste.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="mini-preview">
+      <div class="preview-badge">Ausgabe #01</div>
+
+      <div class="mp-header">
+        <div class="mp-issue">Newsletter · Ausgabe #01 · Kostenlos</div>
+        <div class="mp-masthead">NEU·<span>ERFUNDEN</span></div>
+        <div class="mp-tagline">KI für Frauen, die sich neu erfinden — Schritt für Schritt</div>
+        <div class="mp-date">März 2026<br>Wöchentlich, montags</div>
+      </div>
+
+      <div class="mp-intro">
+        <p>Ich bin Daniela. 52 Jahre. Ich lerne KI — nicht weil ich Technikerin werden will, sondern weil ich finanziell frei werden möchte.<br><br>
+        Kein Fachchinesisch. Nur das, was wirklich hilft.</p>
+        <div class="mp-author">— Daniela Twardy, Gründerin</div>
+      </div>
+
+      <div class="mp-section-row">
+        <span class="mp-num">01</span>
+        <span class="mp-label">KI-Tool der Woche</span>
+      </div>
+
+      <div class="mp-card">
+        <div class="mp-card-title">Claude von Anthropic</div>
+        <div class="mp-card-sub">Dein persönlicher KI-Assistent</div>
+        <p>Schreiben, planen, analysieren — einfach durch normale Sprache. Kein Fachwissen nötig.</p>
+        <div class="mp-use-case">💡 E-Mail formuliert in 30 Sek. — besser als mein Entwurf nach 20 Min.</div>
+      </div>
+
+      <div class="mp-quote">"Ich bin nicht zu alt. Ich bin genau rechtzeitig."</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     PROMISE STRIP
+══════════════════════════════════════════════════════════ -->
+<div class="promise-strip">
+  <div class="promise-inner">
+    <div class="promise-item">
+      <div class="promise-num">01</div>
+      <div class="promise-label">KI-Tool der Woche</div>
+      <p class="promise-text">Ein Tool, das dein Leben leichter macht — erklärt wie unter Freundinnen, nicht wie im Handbuch.</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-num">02</div>
+      <div class="promise-label">Sofort anwendbar</div>
+      <p class="promise-text">Ein Tipp, den du noch heute ausprobieren kannst. Keine Theorie, keine Vorkenntnisse nötig.</p>
+    </div>
+    <div class="promise-item">
+      <div class="promise-num">03</div>
+      <div class="promise-label">Relevante KI-News</div>
+      <p class="promise-text">Nur die Neuigkeiten, die dich wirklich betreffen — gefiltert, eingeordnet, ohne Fachchinesisch.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     NEWSLETTER VOLLVORSCHAU
+══════════════════════════════════════════════════════════ -->
+<section class="preview-section">
+  <div class="section-tag">Das bekommst du</div>
+  <h2 class="section-heading">So sieht <span>Ausgabe #01</span> aus</h2>
+  <p class="section-intro">Kein leeres Versprechen. Schau selbst, was dich jeden Montag erwartet.</p>
+
+  <div class="newsletter-mockup">
+    <div class="mockup-shadow-2"></div>
+    <div class="mockup-shadow-1"></div>
+    <div class="mockup-card">
+
+      <div class="m-header">
+        <div class="m-issue-line">Newsletter · Ausgabe #01 · Kostenlos</div>
+        <div class="m-masthead">NEU·<span>ERFUNDEN</span></div>
+        <div class="m-tagline">KI für Frauen, die sich neu erfinden — Schritt für Schritt, ohne Technikstudium</div>
+        <div class="m-date">März 2026<br>Wöchentlich, montags</div>
+      </div>
+
+      <div class="m-intro">
+        <p>Ich bin Daniela. 52 Jahre. Ich lerne gerade KI — nicht weil ich Technikerin werden will, sondern weil ich finanziell frei werden möchte.<br><br>
+        Dieser Newsletter ist für Frauen, die genauso denken. Jeden Montag: ein Tool, das dein Leben leichter macht. Einen Tipp, den du sofort anwenden kannst. Eine Neuigkeit, die wichtig ist.<br><br>
+        Keine Theorie. Kein Fachchinesisch. Nur das, was wirklich hilft.</p>
+        <div class="m-author">— Daniela Twardy, Gründerin</div>
+      </div>
+
+      <div class="m-section-label">
+        <span class="m-num">01</span>
+        <span class="m-label-text">KI-Tool der Woche</span>
+      </div>
+
+      <div class="m-card">
+        <div class="m-card-title">Claude von Anthropic</div>
+        <div class="m-card-sub">Dein persönlicher KI-Assistent</div>
+        <p>Claude ist ein KI-Assistent, mit dem du schreiben, planen, analysieren und Ideen entwickeln kannst — einfach durch normale Sprache. Erklärt geduldig, auf Deutsch, und gibt zu, wenn er etwas nicht weiß.</p>
+        <div class="m-use-case">💡 <strong>Mein Beispiel:</strong> Ich habe Claude gebeten, mir eine E-Mail zu formulieren. Ergebnis in 30 Sekunden — besser als mein Entwurf nach 20 Minuten.</div>
+      </div>
+
+      <div class="m-quote">"Ich bin nicht zu alt. Ich bin genau rechtzeitig."</div>
+
+    </div>
+  </div>
+
+  <div class="preview-annotation">
+    <div class="annotation-item">
+      <div class="annotation-dot"></div>
+      <div>
+        <h4>Klares, aufgeräumtes Design</h4>
+        <p>Wie eine gute Zeitschrift — lesbar auch auf dem Handy.</p>
+      </div>
+    </div>
+    <div class="annotation-item">
+      <div class="annotation-dot"></div>
+      <div>
+        <h4>Echte Praxisbeispiele</h4>
+        <p>Was Daniela selbst ausprobiert hat, was wirklich funktioniert.</p>
+      </div>
+    </div>
+    <div class="annotation-item">
+      <div class="annotation-dot"></div>
+      <div>
+        <h4>Deine Sprache</h4>
+        <p>Fachwörter werden erklärt, Schritt für Schritt, ohne Vorkenntnisse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     ARCHIV
+══════════════════════════════════════════════════════════ -->
+<section class="archiv-section">
+  <div class="archiv-header">
+    <div class="archiv-header-left">
+      <div class="section-tag">Alle Ausgaben</div>
+      <h2 class="section-heading" style="font-size: clamp(28px,4vw,42px); margin-bottom:0;">Das <span>Archiv</span></h2>
+    </div>
+    <p class="archiv-note">
+      Jede Ausgabe bleibt dauerhaft lesbar — auch wenn du erst später dazustößt.<br>
+      Neue Ausgaben werden automatisch über <a href="https://brevo.com" target="_blank">Brevo</a> verlinkt.
+    </p>
+  </div>
+
+  <div class="archiv-grid">
+    <a class="issue-card" href="newsletter-ausgabe-1.html" target="_blank">
+      <div class="issue-card-top">
+        <div class="issue-num-big">#01</div>
+        <div class="issue-meta">
+          <div class="issue-meta-title">NEU·ERFUNDEN</div>
+          <div class="issue-meta-date">März 2026 · Ausgabe 1</div>
+        </div>
+      </div>
+      <div class="issue-card-body">
+        <div class="issue-topic-row">
+          <div class="issue-topic">
+            <span class="issue-topic-num">01 ·</span>
+            <span class="issue-topic-text">Claude von Anthropic — dein persönlicher KI-Assistent</span>
+          </div>
+          <div class="issue-topic">
+            <span class="issue-topic-num">02 ·</span>
+            <span class="issue-topic-text">So sparst du 2 Stunden pro Woche — ab heute</span>
+          </div>
+          <div class="issue-topic">
+            <span class="issue-topic-num">03 ·</span>
+            <span class="issue-topic-text">Frauen & KI: Wer jetzt anfängt, hat Vorsprung</span>
+          </div>
+        </div>
+      </div>
+      <div class="issue-card-footer">
+        <span class="issue-read-link">Ausgabe lesen →</span>
+        <span class="issue-tag">Verfügbar</span>
+      </div>
+    </a>
+
+    <div class="issue-card-placeholder">
+      <div class="placeholder-icon">#02</div>
+      <div class="placeholder-text">Erscheint nächsten Montag</div>
+    </div>
+
+    <div class="issue-card-placeholder">
+      <div class="placeholder-icon">#03</div>
+      <div class="placeholder-text">Folgt in Kürze</div>
+    </div>
+  </div>
+
+  <div class="archiv-brevo-hint">
+    <strong>So pflegst du das Archiv:</strong> Jede über Brevo versendete Ausgabe bekommt automatisch einen permanenten "Im Browser ansehen"-Link. Diesen Link einfach in eine neue Ausgabe-Karte eintragen — fertig.
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     ABOUT / TRUST
+══════════════════════════════════════════════════════════ -->
+<section class="about-section">
+  <div class="about-inner">
+    <div>
+      <div class="about-quote">"Ich bin nicht zu alt. Ich bin genau rechtzeitig."</div>
+      <p class="about-text">Ich bin Daniela — 52 Jahre. Ich habe selbst bei null angefangen, mit KI-Tools, ganz ohne Technikhintergrund. Was ich dabei gelernt habe, teile ich hier.</p>
+      <p class="about-text">Dieser Newsletter ist das, was ich mir damals gewünscht hätte: ehrlich, direkt, sofort anwendbar. Für Frauen, die sich neu erfinden wollen — egal in welchem Alter.</p>
+      <div class="about-sig">Daniela Twardy</div>
+      <div class="about-meta">Gründerin · Jeden Montag</div>
+    </div>
+    <div class="about-stats">
+      <div class="stat-row">
+        <div class="stat-num">1<span>×</span></div>
+        <div class="stat-label">Pro Woche — montags, kein Spam</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">3<span> Themen</span></div>
+        <div class="stat-label">Tool · Tipp · Neuigkeit — immer dieselbe klare Struktur</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">0<span> €</span></div>
+        <div class="stat-label">Komplett kostenlos, jederzeit abbestellbar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SIGNUP
+══════════════════════════════════════════════════════════ -->
+<section class="signup-section" id="anmelden">
+  <div class="signup-eyebrow">Jetzt dabei sein</div>
+  <h2 class="signup-title">Jeden Montag <span>neu starten</span></h2>
+  <p class="signup-sub">Trag dich ein und bekomme Ausgabe #01 direkt in dein Postfach — kostenlos.</p>
+
+  <!-- Brevo Einbettungsformular -->
+  <style>
+    @font-face {
+      font-display: block;
+      font-family: Roboto;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
+    }
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 600;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
+    }
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 700;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
+    }
+    #sib-container input:-ms-input-placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
+    #sib-container input::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
+    #sib-container textarea::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
+    #sib-container a { text-decoration: underline; color: #2BB2FC; }
+
+    /* NEU·ERFUNDEN Formular-Anpassungen */
+    .sib-form { background-color: transparent !important; }
+    #sib-container { background-color: #FFFFFF !important; border-color: #1C1810 !important; border-width: 1.5px !important; border-radius: 0 !important; max-width: 100% !important; }
+    .sib-form-block__button { background-color: #C4622D !important; border-radius: 0 !important; letter-spacing: 0.1em !important; font-family: 'DM Sans', sans-serif !important; }
+    .sib-form-block__button:hover { background-color: #a8521f !important; }
+  </style>
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+
+  <div class="sib-form" style="text-align: center; background-color: transparent;">
+    <div id="sib-form-container" class="sib-form-container">
+      <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+        <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+          <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+            <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
+          </svg>
+          <span class="sib-form-message-panel__inner-text">Deine Anmeldung konnte nicht gespeichert werden. Bitte versuche es erneut.</span>
+        </div>
+      </div>
+      <div></div>
+      <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+        <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+          <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+            <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+          </svg>
+          <span class="sib-form-message-panel__inner-text">Danke! Schau in dein Postfach — du bekommst gleich eine Bestätigungsmail.</span>
+        </div>
+      </div>
+      <div></div>
+      <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr">
+        <form id="sib-form" method="POST" action="https://367a12a7.sibforms.com/serve/MUIFAFw2oRI7rbV_O51oCOHnItxNKG7PZD6WARvZJiDXTuPoGpoNvF-B1nTMgGvpt97_UycxgY2kVQfv4uIP2gXXrRX_RJb827WcFeR51NlUxFHbgGCrkAow_Br9L3wBCBj7cQEYx-wArSeQ3OgPMXuWS-z-7ilpq-8TnOcJnSem4hJ1DCXdEvC6al7rMe_6QmQA08QCvcE_miKJDA==" data-type="subscription">
+          <div style="padding: 8px 0;">
+            <div class="sib-form-block" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;">
+              <div class="sib-text-form-block">
+                <p>Trag dich ein und bekomme Ausgabe #01 direkt in dein Postfach — kostenlos.</p>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 8px 0;">
+            <div class="sib-input sib-form-block">
+              <div class="form__entry entry_block">
+                <div class="form__label-row">
+                  <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#3c4858;" for="EMAIL" data-required="*">E-Mail-Adresse</label>
+                  <div class="entry__field">
+                    <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="deine@email.de" data-required="true" required />
+                  </div>
+                </div>
+                <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 8px 0;">
+            <div class="sib-form-block" style="text-align: left">
+              <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#FFFFFF; background-color:#C4622D; border-radius:0; border-width:0px;" form="sib-form" type="submit">
+                <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                  <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                </svg>
+                KOSTENLOS ANMELDEN →
+              </button>
+            </div>
+          </div>
+          <input type="text" name="email_address_check" value="" class="input--hidden">
+          <input type="hidden" name="locale" value="de">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
+    window.LOCALE = 'de';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Die eingegebenen Informationen sind nicht gültig. Bitte überprüfe das Feldformat und versuche es erneut.";
+    window.REQUIRED_ERROR_MESSAGE = "Dieses Feld darf nicht leer sein.";
+    window.GENERIC_INVALID_MESSAGE = "Die eingegebenen Informationen sind nicht gültig. Bitte überprüfe das Feldformat und versuche es erneut.";
+    window.translation = {
+      common: {
+        selectedList: '{quantity} Liste ausgewählt',
+        selectedLists: '{quantity} Listen ausgewählt',
+        selectedOption: '{quantity} ausgewählt',
+        selectedOptions: '{quantity} ausgewählt',
+      }
+    };
+    var AUTOHIDE = Boolean(0);
+  </script>
+  <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
+  <p class="signup-reassurance">
+    <span>✓</span> Kostenlos
+    <span>✓</span> Kein Spam
+    <span>✓</span> Jederzeit abbestellbar
+    <span>✓</span> Double-Opt-in (DSGVO-konform)
+  </p>
+
+  <!-- DSGVO -->
+  <div class="dsgvo-box" id="dsgvo">
+    <h4>Datenschutzhinweis (DSGVO)</h4>
+    <p><strong>Verantwortliche:</strong> Daniela Twardy, Deutschland · danilerntki@gmail.com</p>
+    <p><strong>Zweck der Verarbeitung:</strong> Versand des kostenlosen Newsletters NEU·ERFUNDEN. Deine Daten werden ausschließlich für diesen Zweck verwendet und nicht an Dritte weitergegeben.</p>
+    <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Du kannst deine Einwilligung jederzeit widerrufen — über den Abmeldelink in jeder E-Mail oder per Nachricht an mich.</p>
+    <p><strong>Datenverarbeitung:</strong> Der Newsletter-Versand erfolgt über Brevo (Sendinblue SAS, 55 rue d'Amsterdam, 75008 Paris) — zertifiziert nach EU-Datenschutzstandards. Es gilt ein Auftragsverarbeitungsvertrag (AVV) gemäß Art. 28 DSGVO.</p>
+    <p><strong>Deine Rechte:</strong> Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Beschwerderecht bei der zuständigen Aufsichtsbehörde.</p>
+  </div>
+
+  <!-- IMPRESSUM -->
+  <div class="impressum-box" id="impressum">
+    <h4>Impressum</h4>
+    <p><strong>Angaben gemäß § 5 TMG</strong></p>
+    <p>
+      Daniela Twardy<br>
+      Sonnenblumenweg 52e<br>
+      16548 Glienicke/Nordbahn<br>
+      Deutschland
+    </p>
+    <p><strong>Kontakt:</strong><br>
+      E-Mail: danilerntki@gmail.com
+    </p>
+    <p>Dieses Angebot ist ein privates, nicht-kommerzielles Newsletter-Projekt. Es besteht keine Umsatzsteuerpflicht gemäß § 19 UStG (Kleinunternehmerregelung).</p>
+    <p style="font-size:11px; color: var(--muted); margin-top:8px;">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Daniela Twardy, Adresse wie oben.</p>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════
