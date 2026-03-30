@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEUÂ·ERFUNDEN â€” Ausgabe #01</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm-dark: #1C1810;
+    --terra: #C4622D;
+    --gold: #D4A843;
+    --muted: #8A8278;
+    --soft: #EDE8DF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--warm-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .header {
+    border-top: 3px solid var(--warm-dark);
+    border-bottom: 1px solid var(--warm-dark);
+    padding: 32px 0 24px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .issue-line {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .masthead {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .masthead span {
+    color: var(--terra);
+    font-style: italic;
+  }
+
+  .tagline {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .header-date {
+    position: absolute;
+    top: 32px;
+    right: 0;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    letter-spacing: 0.05em;
+  }
+
+  .intro-block {
+    background: var(--warm-dark);
+    color: var(--cream);
+    padding: 32px 36px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro-block::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 160px;
+    color: var(--terra);
+    opacity: 0.2;
+    position: absolute;
+    top: -20px;
+    left: 16px;
+    line-height: 1;
+  }
+
+  .intro-block p {
+    font-size: 16px;
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+
+  .intro-block .author {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-label .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--terra);
+    font-style: italic;
+    line-height: 1;
+    min-width: 32px;
+  }
+
+  .section-label .title {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-left: 1px solid var(--gold);
+    padding-left: 12px;
+  }
+
+  .tool-card {
+    border: 1px solid var(--warm-dark);
+    padding: 28px;
+    margin-bottom: 40px;
+  }
+
+  .tool-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .tool-subtitle {
+    font-size: 13px;
+    color: var(--terra);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .tool-card p {
+    font-size: 15px;
+    margin-bottom: 16px;
+    color: #3a3530;
+  }
+
+  .use-case {
+    background: var(--soft);
+    padding: 16px 20px;
+    border-left: 3px solid var(--terra);
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  .tip-block {
+    margin-bottom: 40px;
+  }
+
+  .tip-content {
+    background: var(--soft);
+    padding: 28px;
+    border-top: 3px solid var(--gold);
+  }
+
+  .tip-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .tip-content p {
+    font-size: 15px;
+    color: #3a3530;
+    margin-bottom: 12px;
+  }
+
+  .steps {
+    counter-reset: steps;
+    list-style: none;
+    margin-top: 16px;
+  }
+
+  .steps li {
+    counter-increment: steps;
+    display: flex;
+    gap: 14px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    align-items: flex-start;
+  }
+
+  .steps li::before {
+    content: counter(steps);
+    background: var(--terra);
+    color: white;
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .news-block {
+    margin-bottom: 40px;
+  }
+
+  .news-item {
+    border-bottom: 1px solid var(--soft);
+    padding: 20px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .news-item:first-of-type { border-top: 1px solid var(--soft); }
+
+  .news-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--terra);
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .news-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .news-item p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .closing {
+    border-top: 3px solid var(--warm-dark);
+    padding-top: 32px;
+    margin-bottom: 40px;
+  }
+
+  .closing-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--terra);
+    margin-bottom: 20px;
+  }
+
+  .closing p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .closing .sig {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--warm-dark);
+    margin-top: 16px;
+  }
+
+  .footer {
+    border-top: 1px solid var(--soft);
+    padding-top: 20px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer a { color: var(--muted); }
+
+  .highlight { color: var(--terra); font-weight: 500; }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--terra);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .back-link:hover { text-decoration: underline; }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="/" class="back-link">&larr; Zur&uuml;ck zur Startseite</a>
+
+  <header class="header">
+    <div class="issue-line">Newsletter &middot; Ausgabe #01 &middot; Kostenlos</div>
+    <div class="masthead">NEU&middot;<span>ERFUNDEN</span></div>
+    <div class="tagline">KI f&uuml;r Frauen, die sich neu erfinden &mdash; Schritt f&uuml;r Schritt, ohne Technikstudium</div>
+    <div class="header-date">M&auml;rz 2026<br>W&ouml;chentlich, montags</div>
+  
+  <div class="intro-block">
+    <p>Ich bin Daniela. 52 Jahre. Wohnhaft bei Berlin. Ich lerne gerade KI -f mdash; nocht weil ich Techindrin werden will, sondern weil ich finanziell frei werden m&ouml;chte. Unabh&auml;ngig. Von &uuml;berall aus arbeitend.<br><br>
+    Dieser Newsletter ist f&uuml;r Frauen, die genauso denken. Jeden Montag bekommst du: ein Tool, das dein Leben leichter macht. Einen Tipp, den du sofort anwenden kannst. Eine Neuigkeit, die wichtig ist.<br><br>
+    Keine Theorie. Kein Fachchinesisch. Nur das, was wirklich hilft.</p>
+    <div class="author">&mdash; Daniela Twardy, Gr&uuml;nderin</div>
+  
+  
+  </div>
+
+  <div class="section-label">
+    <span class="num">01 span >
+    <span class="title">KI-Tool der Woche</span>
+  </div>
+  
+div class="tool-card" >
+    <div class="tool-name">Claude von Anthropic</div>
+    <div class="tool-subtitle">Dein pers&ouml;nlicher KI-Assistent</div>
+    <p>Claude ist ein KI-Assistent(eÃ©n digitaler Helfer, der nat&uuml;rliche Sprache versteht), mit dem du schreiben, planen, analysieren und Ideen entwickeln kannst &mdash; einfach durch normale Sprache.</p>
+    <p>Wat macht Claude besonders? Er erkl&auml;rt Dinge geduldig, auf Wunsch auf Deutsch, und gibt zu, wenn er etwas nicht wei&szlig;. Kein Fachwissen n&ouml;tig.</p>
+    <div class="use-case">
+      &#x1F4A1; <strong>Mein Beispiel diese Woche:</strong> Ich habe Claude gebeten, mir eÃ©ne E-Mail an einen neuen Gesch&auml;ftskontakt zu formulieren. Ergebnis in 30 Sekunden &mdash; besser als mein erster Entwurf nach 20 Minuten.
+    </div>
+  
+  
+  ò¢Ô²ô%e$T4µUDW•#d"eCÕÔ†Ä“Ğ¦‘½he%'w6÷W¦µ7vÃ…„£D…&Æ356 ¢ÆF—b6Æ73Ò'6V7F–öâÖÆ&VÂ#à¢Ç7â6Æ73Ò&çVÒ#ã#Â÷7ãà¢Ç7â6Æ73Ò'F—FÆR#å6öf÷'BçvVæF&&W"F—Â÷7ãà¢ ¢ ¢ cÂöF—cà ¢ÆF—b6Æ73Ò'F—Ö&Æö6²#à¢ÆF—b6Æ73Ò'F—Ö6öçFVçB#à¢Æƒ3å6ò7'7BGR"7GVæFVâ&òvö6†RfÖF6ƒ²"†WWFSÂöƒ3à¢ÇäF–RÖV—7FVâg&VVâÂF–R–6‚¶VææRÂfW&'&–ævVâ§Rf–VÂ¦V—BÖ—BRÔÖ–Ç2â´’¶âF2gWVÖÃµvW&æVæ†ÖRÂfÖF6ƒ²GR×W77BçW"ÆW&æVâÂv–RGRg&w7BãÂ÷à¢ÆöÂ6Æ73Ò'7FW2#à¢ÆÆ“âd÷VÖÃ¶ffæR6ÆVFR†6ÆVFRæ’fÖF6ƒ²¶÷7FVæÆ÷6RfW'6–öâ&V–6‡B“ÂöÆ“à¢ÆÆ“å66‡&V–&S¢Ç7â6Æ73Ò&†–v†Æ–v‡B#âf&GVóµ66‡&V–"Ö—"V–æR&öfW76–öæVÆÆRRÔÖ–ÂâµW'6öåÒÂ–âFW"–6‚µ¦–VÅÒW'&V–6†Vâ"f÷VÖÃ¶6‡FRâFöã¢g&WVæFÆ–6‚&W"F—&V·BâfÆGVó³Â÷7ããÂöÆ“à¢ÆÆ“äÆ–W2FVâVçGwW&bÂ76R"fæF6ƒ³2rf÷VÖÃ·!Ñ•È…¸€™µ‘…Í ì™•ÉÑ¥œğ½±¤ø(€€€€€€€€ñ±¤ùMÁ•¥¡•É”‘¥•Í”Y½É±…”˜™ÕÕµ°íÈ»‘¡ÍÑ”]½¡”ğ½±¤ø(€€€€€€ğ½½°ø(€€€€€€ñÀÍÑå±”ô‰µ…É¥¸µÑ½ÀèÄÙÁàì™½¹ĞµÍ¥é”èÄÍÁàì½±½ÈèÙ…È ´µµÕÑ•¤ìˆš––¥Ñ•ÉÍÁ…É¹¥Ì‰•¥´•ÉÍÑ•¸5…°è€ÄÀ5¥¹ÕÑ•¸¸9… •¥¹•È]½¡”è€ÈMÑÕ¹‘•¸¸9… •¥¹•´5½¹…ĞèI½ÕÑ¥¹”¸ğ½Àø(€€€€€€(€€€€€€ğ½‘¥Øø(€€(€€(€€Ê‹RËĞ•”‘PÒÔU^TŒU‰•WROBšFõ¡””ÜÛİ^šÔİÛVŒY›ÌÔLØTB‚ˆ]ˆÛ\ÜÏHœÙXİ[Û‹[X™[‚ˆÜ[ˆÛ\ÜÏH›[HŒÏÜÜ[‚ˆÜ[ˆÛ\ÜÏH]H’ÒKS™]ÜËYHXÚÚ\šÛXÚ™]™Y™™[ÜÜ[‚ˆÙ]‚‚ˆ]ˆÛ\ÜÏH›™]ÜËX›ØÚÈ‚ˆ]ˆÛ\ÜÏH›™]ÜËZ][H‚ˆ]ˆÛ\ÜÏH›™]ÜËYİÙ]‚ˆ]‚ˆ‘œ˜]Y[ˆ	˜[\ÈÒNˆÙ\ˆ™][™‰˜][[Û™İ]›ÜœÜ[™ÏÚ‚ˆ“]]ZİY[[ˆİYY[ˆ]™[ˆ›ØÚ[[Y\ˆ]]XÚÙ[šYÙ\ˆœ˜]Y[ˆ[ÈI˜][[Û›™\ˆÒHÛÛÈ™\Y›XÚˆ\È™Y]]]ˆÙ\ˆ™]Z[œİZYİ\İœ‰][[ÚX™ZH	›Y\ÚÈ[™\È˜ZÚXÚ]\ËÜ‚ˆÙ]‚ˆÙ]‚ˆ]ˆÛ\ÜÏH›™]ÜËZ][H‚ˆ]ˆÛ\ÜÏH›™]ÜËYİÙ]‚ˆ]‚ˆ’ÛÜİ[›ÜÙHÒKUÛÛÈ™ZXÚ[ˆ‰][[Üˆ[ˆİ\Ú‚ˆ‘Hœ˜]XÚİÙZ[ˆ]\™\ÈX›ËˆÛ]YKÚ]Ô[™Ø[˜HX™[ˆÛÜİ[›ÜÙH™\œÚ[Û™[‹YH‰][[Üˆ	H\ˆ[	˜][[ÙÛXÚ[ˆ]Y™×X™[ˆ»gİ[[ÛYÈ]\Ü™ZXÚ[‹ˆ\œİÙ[›ˆHY\šÜİØ\ÈHœ˜]XÚİÚÚXÚZ[ˆ\Ü˜YKÜ‚ˆÙ]‚ˆÙ]‚ˆ]ˆÛ\ÜÏH›™]ÜËZ][H‚ˆ]ˆÛ\ÜÏH›™]ÜËYİÙ]‚ˆ]‚ˆ“‰˜][[ØÚİHÛØÚH[H™]ÜÛ]\Ú‚ˆ’XÚ™ZYÙH\‹ÚYHHZ]ÒH[ˆHİ[™HZ[™[ˆÛÛ\][ˆÛØÚ[œ[ˆ\œİ[İ	›Y\ÚÈ[šÛ\Ú]™H]\Ù[‹š[Üš]	˜][[İ[ˆ[™™X[\İ\ØÚ[ˆšY[[‹Ü‚ˆÙ]‚ˆÙ]‚ˆÙ]‚‚ˆ]ˆÛ\ÜÏH˜ÛÜÚ[™È‚ˆ]ˆÛ\ÜÏH˜ÛÜÚ[™Ë\][İH‰˜™][ÎÒXÚš[ˆšXÚH[ˆXÚš[ˆÙ[˜]H™XÚ™Z]YË‰›][ÎÏÙ]‚ˆ‘[šÙK\ÜÈHY\ÙH\œİH]\ÙØX™HÙ[\Ù[ˆ\İˆÙ[›ˆH™[X[™[ˆÙ[›œİ\ˆY\ÙHKSXZ[œ˜]XÚ	›Y\ÚÈZ]HÚYHÙZ]\‹ˆÙZ[™HÜ›ÉœŞ›YÎÙHš]Kˆ\ˆZ[œËÜ‚ˆ“‰˜][[ØÚİ[ˆ[ÛYÈÙZ\ÈÙZ]\‹ˆš\ÈZ[ˆ›ØšY\™H[ˆ\]\ËˆÚ\šÛXÚˆ\ˆZ[›X[Ü‚ˆ]ˆÛ\ÜÏHœÚYÈ‘[šY[OÙ]‚ˆˆˆÙ]‚ˆˆ]ˆÛ\ÜÏH™›Ûİ\ˆ‚ˆÜ[“‘UI›ZYİÑT‘•S‘Sˆ™]ÜÛ]\ˆ	›ZYİÈ™\›[‹]]ØÚ[™ÜÜ[‚ˆÜ[H™YH‹È•Üİ\ÙZ]OØOˆ	›ZYİÈH™YHšÎ‹ËÚÚKYY\‹Yœ˜]Y[‹™HšÚKY‰][[Ü‹Yœ˜]Y[‹™OØOÜÜ[‚ˆˆˆÙ]‚‚‚Ù]‚Ø›ÙO‚ˆÚ
