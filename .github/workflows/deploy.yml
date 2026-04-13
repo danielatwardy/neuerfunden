@@ -19,7 +19,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          source: "index.html,ausgabe-01.html,ausgabe-02.html,ausgabe-03.html,ausgabe-04.html"
+          source: "index.html,ausgabe-01.html,ausgabe-02.html,ausgabe-03.html,ausgabe-04.html,ausgabe-05.html"
           target: "/tmp/"
 
       - name: Deploy to Docker container
@@ -30,7 +30,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             docker cp /tmp/index.html neuerfunden:/usr/share/nginx/html/index.html
-            for f in ausgabe-01.html ausgabe-02.html ausgabe-03.html ausgabe-04.html; do
+            for f in ausgabe-01.html ausgabe-02.html ausgabe-03.html ausgabe-04.html ausgabe-05.html; do
               if [ -f /tmp/$f ]; then
                 docker cp /tmp/$f neuerfunden:/usr/share/nginx/html/$f
               fi
