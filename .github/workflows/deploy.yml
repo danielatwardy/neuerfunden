@@ -29,10 +29,11 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            docker cp /tmp/index.html neuerfunden:/usr/share/nginx/html/index.html
+            CONTAINER=$(docker ps --format '{{.Names}}' | grep m7vzr57sbed02st4xn3vfzqm || echo "neuerfunden")
+            docker cp /tmp/index.html $CONTAINER:/usr/share/nginx/html/index.html
             for f in ausgabe-01.html ausgabe-02.html ausgabe-03.html ausgabe-04.html ausgabe-05.html ausgabe-06.html ausgabe-07.html ausgabe-08.html ausgabe-09.html ausgabe-10.html ausgabe-11.html ausgabe-12.html ausgabe-13.html; do
               if [ -f /tmp/$f ]; then
-                docker cp /tmp/$f neuerfunden:/usr/share/nginx/html/$f
+                docker cp /tmp/$f $CONTAINER:/usr/share/nginx/html/$f
               fi
             done
-            echo "DEPLOYED"
+            echo "DEPLOYED to $CONTAINER"
