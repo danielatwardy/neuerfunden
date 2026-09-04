@@ -918,8 +918,8 @@
 
     <div class="hero-proof">
       <div class="hero-proof-dot"></div>
-      <span class="hero-proof-number">Gründer-Ausgabe</span>
-      <span>— Sei dabei, wenn es losgeht.</span>
+      <span class="hero-proof-number" data-issue-count>25 Ausgaben</span>
+      <span>— jeden Montag seit März 2026.</span>
     </div>
 
     <p class="hero-sub">
@@ -949,7 +949,7 @@
       </p>
       <div class="social-proof-strip">
         <span class="social-proof-strip-icon">✦</span>
-        <span><strong>Bereits 25 Ausgaben erschienen.</strong> Trag dich ein und lies sie alle im Archiv.</span>
+        <span><strong data-issue-count-sentence>Bereits 25 Ausgaben erschienen.</strong> Trag dich ein und lies sie alle im Archiv.</span>
       </div>
     </div>
   </div>
@@ -1091,8 +1091,7 @@
       <h2 class="section-heading" style="font-size: clamp(28px,4vw,42px); margin-bottom:0;">Das <span>Archiv</span></h2>
     </div>
     <p class="archiv-note">
-      Jede Ausgabe bleibt dauerhaft lesbar — auch wenn du erst später dazustößt.<br>
-      Neue Ausgaben werden automatisch über <a href="https://brevo.com" target="_blank">Brevo</a> verlinkt.
+      Jede Ausgabe bleibt dauerhaft lesbar — auch wenn du erst später dazustößt.
     </p>
   </div>
 
@@ -1866,7 +1865,7 @@
 <section class="signup-section" id="anmelden">
   <div class="signup-eyebrow">Jetzt dabei sein</div>
   <h2 class="signup-title">Jeden Montag <span>neu starten</span></h2>
-  <p class="signup-sub">Trag dich ein und bekomme Ausgabe #01 direkt in dein Postfach — kostenlos.</p>
+  <p class="signup-sub">Trag dich ein und bekomme die nächste Ausgabe direkt in dein Postfach — kostenlos.</p>
 
   <!-- Brevo Einbettungsformular -->
   <style>
@@ -1925,7 +1924,7 @@
           <div style="padding: 8px 0;">
             <div class="sib-form-block" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;">
               <div class="sib-text-form-block">
-                <p>Trag dich ein und bekomme Ausgabe #01 direkt in dein Postfach — kostenlos.</p>
+                <p>Trag dich ein und bekomme die nächste Ausgabe direkt in dein Postfach — kostenlos.</p>
               </div>
             </div>
           </div>
@@ -1995,6 +1994,10 @@
   </div>
 
   <!-- IMPRESSUM -->
+  <div class="ki-hinweis" style="max-width:680px; margin:0 auto 28px; padding:0 4px; font-size:13px; line-height:1.7; color:#8A8278; font-style:italic;">
+    Ein Newsletter über KI ohne KI wäre wie ein Fahrlehrer ohne Führerschein. Also: ja, KI schreibt mit. Ich entscheide, was bleibt.
+  </div>
+
   <div class="impressum-box" id="impressum">
     <h4>Impressum</h4>
     <p><strong>Angaben gemäß § 5 TMG</strong></p>
@@ -2009,3 +2012,14 @@
     </p>
     <p>Dieses Angebot ist ein privates, nicht-kommerzielles Newsletter-Projekt. Es besteht keine Umsatzsteuerpflicht gemäß § 19 UStG (Kleinunternehmerregelung).</p>
     <p style="font-size:11px; color:
+
+<script>
+  (function () {
+    var n = document.querySelectorAll('.issue-card').length;
+    if (!n) return;
+    var badge = document.querySelector('[data-issue-count]');
+    if (badge) badge.textContent = n + ' Ausgaben';
+    var satz = document.querySelector('[data-issue-count-sentence]');
+    if (satz) satz.textContent = 'Bereits ' + n + ' Ausgaben erschienen.';
+  })();
+</script>
