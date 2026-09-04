@@ -899,6 +899,16 @@
     .brevo-form { padding: 28px 20px; }
   }
 </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var n = document.querySelectorAll('.issue-card').length;
+      if (!n) return;
+      var badge = document.querySelector('[data-issue-count]');
+      if (badge) badge.textContent = n + ' Ausgaben';
+      var satz = document.querySelector('[data-issue-count-sentence]');
+      if (satz) satz.textContent = 'Bereits ' + n + ' Ausgaben erschienen.';
+    });
+  </script>
 </head>
 <body>
 
@@ -2012,14 +2022,3 @@
     </p>
     <p>Dieses Angebot ist ein privates, nicht-kommerzielles Newsletter-Projekt. Es besteht keine Umsatzsteuerpflicht gemäß § 19 UStG (Kleinunternehmerregelung).</p>
     <p style="font-size:11px; color:
-
-<script>
-  (function () {
-    var n = document.querySelectorAll('.issue-card').length;
-    if (!n) return;
-    var badge = document.querySelector('[data-issue-count]');
-    if (badge) badge.textContent = n + ' Ausgaben';
-    var satz = document.querySelector('[data-issue-count-sentence]');
-    if (satz) satz.textContent = 'Bereits ' + n + ' Ausgaben erschienen.';
-  })();
-</script>
